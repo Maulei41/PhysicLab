@@ -14,9 +14,8 @@ export default function GayLussacLaw() {
   const [isDragging, setIsDragging] = useState(false);
 
   // 用於動畫與物理迴圈的 Refs
-  const tempRef = useRef(BASE_TEMP);
-  const targetTempRef = useRef(BASE_TEMP);
-  const dragOffset = useRef({ x: 0, y: 0 });
+  const dragStartPos = useRef({ x: 0, y: 0 });
+  const flaskStartPos = useRef({ x: 0, y: 0 });
 
   // 粒子狀態 (產生 40 個相同顏色的粒子)
   const particlesRef = useRef(
@@ -106,28 +105,27 @@ export default function GayLussacLaw() {
     setIsDragging(true);
     e.currentTarget.setPointerCapture(e.pointerId);
 
-    const svg = e.currentTarget.ownerSVGElement;
-    const pt = svg.createSVGPoint();
-    pt.x = e.clientX;
-    pt.y = e.clientY;
-    const cursorPt = pt.matrixTransform(svg.getScreenCTM().inverse());
-
-    dragOffset.current = {
-      x: flaskPos.x - cursorPt.x,
-      y: flaskPos.y - cursorPt.y
-    };
+    dragStartPos.current = { x: e.clientX, y: e.clientY };
+    flaskStartPos.current = flaskPos;
   };
 
   const handlePointerMove = (e) => {
     if (!isDragging) return;
-    const svg = e.currentTarget.ownerSVGElement;
-    const pt = svg.createSVGPoint();
-    pt.x = e.clientX;
-    pt.y = e.clientY;
-    const cursorPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+    e.preventDefault();
 
-    let nx = cursorPt.x + dragOffset.current.x;
-    let ny = cursorPt.y + dragOffset.current.y;
+    const dx = e.clientX - dragStartPos.current.x;
+    const dy = e.clientY - dragStartPos.current.y;
+
+    const svgElement = e.currentTarget.ownerSVGElement || e.currentTarget;
+    const rect = svgElement.getBoundingClientRect();
+    const svgScaleX = 400 / rect.width; // viewBox width
+    const svgScaleY = 500 / rect.height; // viewBox height
+
+    const svgDx = dx * svgScaleX;
+    const svgDy = dy * svgScaleY;
+
+    let nx = flaskStartPos.current.x + svgDx;
+    let ny = flaskStartPos.current.y + svgDy;
 
     // 限制容器在畫面範圍內
     nx = Math.max(50, Math.min(350, nx));
