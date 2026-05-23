@@ -14,6 +14,8 @@ export default function GayLussacLaw() {
   const [isDragging, setIsDragging] = useState(false);
 
   // 用於動畫與物理迴圈的 Refs
+  const tempRef = useRef(BASE_TEMP);
+  const targetTempRef = useRef(BASE_TEMP);
   const dragStartPos = useRef({ x: 0, y: 0 });
   const flaskStartPos = useRef({ x: 0, y: 0 });
 
