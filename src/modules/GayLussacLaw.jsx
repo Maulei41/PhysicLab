@@ -190,7 +190,7 @@ export default function GayLussacLaw() {
 
           <div className="relative w-full max-w-[400px] aspect-[4/5] bg-slate-100 rounded-lg overflow-hidden border border-slate-200 flex justify-center items-end pb-0">
             
-            <svg viewBox="0 0 400 500" className="w-full h-full select-none">
+            <svg viewBox="0 0 400 500" className="w-full h-full select-none touch-none">
               
               {/* 背景提示文字 */}
               <text x="200" y="200" textAnchor="middle" fill="#94a3b8" fontSize="14" fontWeight="bold">室溫區 (300 K)</text>
