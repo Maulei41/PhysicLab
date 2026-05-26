@@ -1,0 +1,21 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - heading "PhysicLab" [level=1] [ref=e7]
+    - paragraph [ref=e8]: Student Physics Simulations
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: Full Name
+      - generic [ref=e12]:
+        - textbox "Full Name" [active] [ref=e13]
+        - group:
+          - generic: Full Name
+    - generic [ref=e14]:
+      - generic: Student ID (SID)
+      - generic [ref=e15]:
+        - textbox "Student ID (SID)" [ref=e16]
+        - group:
+          - generic: Student ID (SID)
+    - button "Login" [ref=e17] [cursor=pointer]
+  - generic [ref=e18]: Your information is stored locally in cookies for this session only.
+  - link "Admin Login" [ref=e20] [cursor=pointer]:
+    - /url: /admin

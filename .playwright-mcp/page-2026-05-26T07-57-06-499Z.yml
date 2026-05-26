@@ -1,0 +1,41 @@
+- generic [ref=e22]:
+  - banner [ref=e23]:
+    - generic [ref=e24]:
+      - heading "PhysicLab" [level=6] [ref=e99]
+      - generic [ref=e26]:
+        - paragraph [ref=e27]:
+          - text: "Logged in as:"
+          - strong [ref=e28]: Admin
+        - button "Logout" [ref=e100] [cursor=pointer]:
+          - img [ref=e31]
+          - text: Logout
+  - generic [ref=e33]:
+    - generic [ref=e34]:
+      - heading "Student Login Records" [level=4] [ref=e101]
+      - paragraph [ref=e36]: View and manage student login records. You can edit or delete records, or export them as CSV.
+    - generic [ref=e37]:
+      - button "Export as CSV" [ref=e102] [cursor=pointer]:
+        - img [ref=e41]
+        - text: Export CSV
+      - table [ref=e44]:
+        - rowgroup [ref=e45]:
+          - row "Name Student ID (SID) Login Time Actions" [ref=e103]:
+            - columnheader "Name" [ref=e104]
+            - columnheader "Student ID (SID)" [ref=e105]
+            - columnheader "Login Time" [ref=e106]
+            - columnheader "Actions" [ref=e107]
+        - rowgroup [ref=e51]:
+          - row "AliceAlice Smith S99999 05/26/2026, 15:55:53 Edit Delete" [ref=e108]:
+            - cell "AliceAlice Smith" [ref=e109]
+            - cell "S99999" [ref=e110]
+            - cell "05/26/2026, 15:55:53" [ref=e111]
+            - cell "Edit Delete" [ref=e112]:
+              - button "Edit" [active] [ref=e113] [cursor=pointer]:
+                - img [ref=e58]
+              - button "Delete" [ref=e114] [cursor=pointer]:
+                - img [ref=e61]
+      - paragraph [ref=e64]:
+        - text: "Total logins recorded:"
+        - strong [ref=e65]: "1"
+        - text: "| Unique students:"
+        - strong [ref=e66]: "1"

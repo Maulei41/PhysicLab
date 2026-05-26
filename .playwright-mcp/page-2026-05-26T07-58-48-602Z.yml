@@ -1,0 +1,44 @@
+- generic [ref=e96]:
+  - banner [ref=e97]:
+    - generic [ref=e98]:
+      - heading "PhysicLab" [level=6] [ref=e99]
+      - generic [ref=e100]:
+        - paragraph [ref=e101]:
+          - text: "Logged in as:"
+          - strong [ref=e102]: Bob Johnson
+        - button "Logout" [ref=e103] [cursor=pointer]:
+          - img [ref=e105]
+          - text: Logout
+  - generic [ref=e107]:
+    - generic [ref=e108]:
+      - heading "Welcome, Bob Johnson!" [level=1] [ref=e109]
+      - heading "Select a module below to start exploring physics simulations." [level=6] [ref=e110]
+    - generic [ref=e111]:
+      - generic [ref=e113]:
+        - generic [ref=e114]:
+          - heading "🔬" [level=4] [ref=e115]
+          - heading "Gay-Lussac's Law" [level=6] [ref=e116]
+        - button "Enter Module" [ref=e118] [cursor=pointer]:
+          - text: Enter Module
+          - img [ref=e120]
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - heading "🔬" [level=4] [ref=e125]
+          - heading "Boyle's Law" [level=6] [ref=e126]
+        - button "Enter Module" [ref=e128] [cursor=pointer]:
+          - text: Enter Module
+          - img [ref=e130]
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - heading "🔬" [level=4] [ref=e135]
+          - heading "Charles's Law" [level=6] [ref=e136]
+        - button "Enter Module" [ref=e138] [cursor=pointer]:
+          - text: Enter Module
+          - img [ref=e140]
+      - generic [ref=e143]:
+        - generic [ref=e144]:
+          - heading "🔬" [level=4] [ref=e145]
+          - heading "Ideal Gas Law" [level=6] [ref=e146]
+        - button "Enter Module" [ref=e148] [cursor=pointer]:
+          - text: Enter Module
+          - img [ref=e150]

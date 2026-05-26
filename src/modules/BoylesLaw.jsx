@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Box, Paper, Typography, Grid, Button } from '@mui/material';
 
 // SVG 空間中加長型圓柱體的尺寸
 const CYL_LEFT = 140;
@@ -192,32 +193,32 @@ export default function BoylesLaw() {
     const gaugeAngle = Math.max(-135, Math.min(135, ((pressure - 50) / 450) * 270 - 135));
 
     return (
-        <div className="min-h-screen bg-slate-50 p-4 md:p-6 font-sans text-slate-800 flex flex-col">
-            <header className="mb-6 pb-4 border-b border-slate-200">
-                <h1 className="text-3xl font-bold text-slate-900">波以耳定律模擬器</h1>
-                <p className="text-slate-600 mt-2 max-w-4xl">
+        <Box sx={{ minHeight: '100vh', bgcolor: '#f1f5f9', p: { xs: 1, md: 1.5 }, fontFamily: '"Inter","Roboto",sans-serif', color: '#1e293b', display: 'flex', flexDirection: 'column' }}>
+            <Box component="header" sx={{ mb: 3, pb: 1, borderBottom: 1, borderColor: '#e2e8f0' }}>
+                <Typography variant="h4" sx={{ fontWeight: 700, color: '#0f172a' }}>波以耳定律模擬器</Typography>
+                <Typography sx={{ color: '#475569', mt: 1, maxWidth: 896 }}>
                     探討在等溫下壓力與體積之間的關係 (P ∝ 1/V)。
                     <strong>向下拉動把手</strong>來壓縮氣體，並觀察將壓力對體積倒數 (1/V) 作圖時，雙曲線如何拉直成直線。
-                </p>
-            </header>
+                </Typography>
+            </Box>
 
-            <div className="flex flex-col lg:flex-row gap-6 flex-1 max-w-7xl mx-auto w-full">
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, gap: 3, flex: 1, maxWidth: 1280, mx: 'auto', width: '100%' }}>
 
                 {/* 左側艙間：加長型儀器動畫 */}
-                <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
-                    <div className="w-full flex justify-between items-center mb-3">
-                        <h2 className="text-lg font-bold text-slate-700">加長型氣室</h2>
-                        <span className="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-semibold">
+                <Paper sx={{ p: 2.5, flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid', borderColor: '#e2e8f0' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5, width: '100%' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 700, color: '#334155' }}>加長型氣室</Typography>
+                        <Box component="span" sx={{ fontSize: '0.75rem', bgcolor: '#d1fae5', color: '#065f46', px: 1.25, py: 0.5, borderRadius: '9999px', fontWeight: 600 }}>
               等溫氣室
-            </span>
-                    </div>
+            </Box>
+                    </Box>
 
-                    <div className="relative w-full max-w-[400px] aspect-[4/5] bg-slate-100 rounded-lg overflow-hidden border border-slate-200 flex justify-center items-end pb-4">
-                        <div className="absolute top-2 left-2 right-2 bg-white/95 backdrop-blur-sm p-2 rounded text-xs text-center border border-slate-200 pointer-events-none z-10 shadow-sm">
+                    <Box sx={{ position: 'relative', width: '100%', maxWidth: '400px', aspectRatio: '4/5', bgcolor: '#f1f5f9', borderRadius: 1, overflow: 'hidden', border: '1px solid', borderColor: '#e2e8f0', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', pb: 2 }}>
+                        <Box sx={{ position: 'absolute', top: 1, left: 1, right: 1, bgcolor: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(4px)', p: 1, borderRadius: 1, textAlign: 'center', border: '1px solid', borderColor: '#e2e8f0', pointerEvents: 'none', zIndex: 10, boxShadow: 1, fontSize: '0.75rem' }}>
                             💡 <strong>向下拉動把手</strong>來壓縮氣體。
-                        </div>
+                        </Box>
 
-                        <svg viewBox="0 0 400 500" className="w-full h-full select-none touch-none">
+                        <svg viewBox="0 0 400 500" style={{ width: '100%', height: '100%', userSelect: 'none', touchAction: 'none' }}>
 
                             {/* 外側圓柱體玻璃輪廓 (加長型) */}
                             <path
@@ -275,7 +276,7 @@ export default function BoylesLaw() {
                                 <circle cx="200" cy={pistonY - 65} r="15" fill="#1e293b" opacity="0.1" />
 
                                 {/* SVG 推動的手 / 手指指示器 */}
-                                <g transform={`translate(200, ${pistonY - 82})`} opacity={isDragging ? 1 : 0.75} className="transition-opacity">
+                                <g transform={`translate(200, ${pistonY - 82})`} opacity={isDragging ? 1 : 0.75} style={{ transition: 'opacity 0.2s' }}>
                                     {/* 手部基底/手掌輪廓 */}
                                     <path
                                         d="M -16 -35 L -16 -8 Q -16 6 -6 6 L 6 6 Q 16 6 16 -8 L 16 -35"
@@ -338,86 +339,100 @@ export default function BoylesLaw() {
                                     x1="0" y1="0" x2="0" y2="-32"
                                     stroke="#ef4444" strokeWidth="3" strokeLinecap="round"
                                     style={{ transform: `rotate(${gaugeAngle}deg)` }}
-                                    className="transition-transform duration-100 ease-out"
+                                    style={{ transition: 'transform 0.1s ease-out' }}
                                 />
                                 <circle cx="0" cy="0" r="5" fill="#1e293b" />
-                                <text x="0" y="22" textAnchor="middle" className="text-[10px] font-extrabold fill-slate-500">kPa</text>
+                                <text x="0" y="22" textAnchor="middle" fontSize="10" fontWeight="800" fill="#64748b">kPa</text>
                             </g>
                         </svg>
-                    </div>
+                    </Box>
 
                     {/* 電子儀表板讀數 */}
-                    <div className="mt-4 w-full max-w-[400px] grid grid-cols-2 gap-4">
-                        <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col items-center">
-                            <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">氣室體積</span>
-                            <span className="text-2xl font-mono font-bold text-sky-600 mt-1">
+                    <Grid container spacing={2} sx={{ mt: 2, maxWidth: '400px', width: '100%' }}>
+                        <Grid item xs={6}>
+                            <Box sx={{ bgcolor: '#f8fafc', p: 1.5, borderRadius: 1, border: '1px solid', borderColor: '#e2e8f0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <Typography variant="caption" sx={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>氣室體積</Typography>
+                                <Typography variant="h5" sx={{ fontFamily: '"Fira Code","Consolas",monospace', fontWeight: 700, color: '#0284c7', mt: 0.5 }}>
                 {volume.toFixed(2)} m³
-              </span>
-                        </div>
-                        <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col items-center">
-                            <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">感測器壓力</span>
-                            <span className="text-2xl font-mono font-bold text-emerald-600 mt-1">
+              </Typography>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Box sx={{ bgcolor: '#f8fafc', p: 1.5, borderRadius: 1, border: '1px solid', borderColor: '#e2e8f0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <Typography variant="caption" sx={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>感測器壓力</Typography>
+                                <Typography variant="h5" sx={{ fontFamily: '"Fira Code","Consolas",monospace', fontWeight: 700, color: '#059669', mt: 0.5 }}>
                 {pressure.toFixed(1)} kPa
-              </span>
-                        </div>
-                    </div>
+              </Typography>
+                            </Box>
+                        </Grid>
+                    </Grid>
 
                     {/* 互動控制項 */}
-                    <div className="mt-4 flex flex-wrap gap-2 w-full max-w-[400px] justify-center">
-                        <button
+                    <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1, width: '100%', maxWidth: '400px', justifyContent: 'center' }}>
+                        <Button
                             onClick={() => setPresetVolume(5.0)}
-                            className="py-1.5 px-3 rounded text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+                            variant="outlined"
+                            size="small"
+                            sx={{ fontSize: '0.75rem', fontWeight: 600 }}
                         >
                             最大 (5.0 m³)
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                             onClick={() => setPresetVolume(2.5)}
-                            className="py-1.5 px-3 rounded text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+                            variant="outlined"
+                            size="small"
+                            sx={{ fontSize: '0.75rem', fontWeight: 600 }}
                         >
                             中等 (2.5 m³)
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                             onClick={() => setPresetVolume(1.0)}
-                            className="py-1.5 px-3 rounded text-xs font-semibold bg-red-50 hover:bg-red-100 text-red-700 transition border border-red-200"
+                            variant="outlined"
+                            size="small"
+                            sx={{ fontSize: '0.75rem', fontWeight: 600, borderColor: '#fecaca', color: '#b91c1c', '&:hover': { bgcolor: '#fef2f2', borderColor: '#fecaca' } }}
                         >
                             最小 (1.0 m³)
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                             onClick={() => setShowMolecules(!showMolecules)}
-                            className={`py-1.5 px-3 rounded text-xs font-semibold transition ${showMolecules ? 'bg-cyan-100 text-cyan-800' : 'bg-slate-200 text-slate-600'}`}
+                            variant={showMolecules ? "contained" : "outlined"}
+                            size="small"
+                            sx={{ fontSize: '0.75rem', fontWeight: 600, bgcolor: showMolecules ? '#cffafe' : undefined, color: showMolecules ? '#155e75' : undefined, '&:hover': showMolecules ? { bgcolor: '#a5f3fc' } : undefined }}
                         >
                             {showMolecules ? '隱藏粒子' : '顯示粒子'}
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                             onClick={handleReset}
-                            className="py-1.5 px-3 rounded text-xs font-semibold bg-amber-500 text-white hover:bg-amber-600 transition shadow-sm"
+                            variant="contained"
+                            size="small"
+                            sx={{ fontSize: '0.75rem', fontWeight: 600, bgcolor: '#f59e0b', '&:hover': { bgcolor: '#d97706' } }}
                         >
                             重設
-                        </button>
-                    </div>
-                </div>
+                        </Button>
+                    </Box>
+                </Paper>
 
                 {/* 右側艙間：雙重即時圖表 */}
-                <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col justify-between gap-6">
+                <Paper sx={{ p: 2.5, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 3, border: '1px solid', borderColor: '#e2e8f0' }}>
 
                     {/* 圖表 1：壓力對體積 */}
-                    <div className="flex-1 flex flex-col items-center">
-                        <h3 className="text-sm font-bold text-slate-700 mb-2 w-full text-left border-l-4 border-sky-500 pl-2">
+                    <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Typography variant="body2" sx={{ fontWeight: 700, color: '#334155', mb: 1, width: '100%', textAlign: 'left', borderLeft: 4, borderColor: '#0ea5e9', pl: 1 }}>
                             1. 壓力與體積關係圖 (P-V 曲線)
-                        </h3>
-                        <div className="w-full aspect-[5/2.2] relative flex justify-center items-center">
-                            <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} className="w-full h-full overflow-visible">
+                        </Typography>
+                        <Box sx={{ width: '100%', aspectRatio: '5/2.2', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} style={{ width: '100%', height: '100%', overflow: 'visible' }}>
                                 {/* 網格線 */}
                                 {Array.from({ length: 7 }).map((_, i) => (
                                     <g key={`grid-x-${i}`}>
                                         <line x1={mapX(i)} y1={margin.top} x2={mapX(i)} y2={graphHeight - margin.bottom} stroke="#f1f5f9" strokeWidth="1.5" />
-                                        <text x={mapX(i)} y={graphHeight - margin.bottom + 14} textAnchor="middle" className="text-[9px] font-mono fill-slate-400">{i}</text>
+                                        <text x={mapX(i)} y={graphHeight - margin.bottom + 14} textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#94a3b8">{i}</text>
                                     </g>
                                 ))}
                                 {[0, 200, 400, 600].map((p) => (
                                     <g key={`grid-y-${p}`}>
                                         <line x1={margin.left} y1={mapY(p)} x2={graphWidth - margin.right} y2={mapY(p)} stroke="#f1f5f9" strokeWidth="1.5" />
-                                        <text x={margin.left - 8} y={mapY(p) + 4} textAnchor="end" className="text-[9px] font-mono fill-slate-400">{p}</text>
+                                        <text x={margin.left - 8} y={mapY(p) + 4} textAnchor="end" fontSize="9" fontFamily="monospace" fill="#94a3b8">{p}</text>
                                     </g>
                                 ))}
 
@@ -426,8 +441,8 @@ export default function BoylesLaw() {
                                 <line x1={margin.left} y1={graphHeight - margin.bottom} x2={margin.left} y2={margin.top} stroke="#475569" strokeWidth="1.5" />
 
                                 {/* 軸標籤 */}
-                                <text x={margin.left + plotWidth / 2} y={graphHeight - 4} textAnchor="middle" className="text-[10px] font-bold fill-slate-500">體積, V (m³)</text>
-                                <text transform={`translate(${margin.left - 42}, ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" className="text-[10px] font-bold fill-slate-500">壓力, P (kPa)</text>
+                                <text x={margin.left + plotWidth / 2} y={graphHeight - 4} textAnchor="middle" fontSize="10" fontWeight="bold" fill="#64748b">體積, V (m³)</text>
+                                <text transform={`translate(${margin.left - 42}, ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" fontSize="10" fontWeight="bold" fill="#64748b">壓力, P (kPa)</text>
 
                                 {/* 理論雙曲線 */}
                                 <path d={`M ${generateHyperbolaPoints()}`} fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="4,4" opacity="0.6" />
@@ -440,27 +455,27 @@ export default function BoylesLaw() {
                                 {/* 操作標記 */}
                                 <circle cx={mapX(volume)} cy={mapY(pressure)} r="5.5" fill="#ef4444" stroke="white" strokeWidth="1.5" />
                             </svg>
-                        </div>
-                    </div>
+                        </Box>
+                    </Box>
 
                     {/* 圖表 2：壓力對體積倒數 */}
-                    <div className="flex-1 flex flex-col items-center">
-                        <h3 className="text-sm font-bold text-slate-700 mb-2 w-full text-left border-l-4 border-emerald-500 pl-2">
+                    <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Typography variant="body2" sx={{ fontWeight: 700, color: '#334155', mb: 1, width: '100%', textAlign: 'left', borderLeft: 4, borderColor: '#10b981', pl: 1 }}>
                             2. 壓力與體積倒數關係圖 (P 對 1/V 的線性關係)
-                        </h3>
-                        <div className="w-full aspect-[5/2.2] relative flex justify-center items-center">
-                            <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} className="w-full h-full overflow-visible">
+                        </Typography>
+                        <Box sx={{ width: '100%', aspectRatio: '5/2.2', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} style={{ width: '100%', height: '100%', overflow: 'visible' }}>
                                 {/* 網格線 */}
                                 {[0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2].map((invV) => (
                                     <g key={`grid-invx-${invV}`}>
                                         <line x1={mapInvX(invV)} y1={margin.top} x2={mapInvX(invV)} y2={graphHeight - margin.bottom} stroke="#f1f5f9" strokeWidth="1.5" />
-                                        <text x={mapInvX(invV)} y={graphHeight - margin.bottom + 14} textAnchor="middle" className="text-[9px] font-mono fill-slate-400">{invV.toFixed(1)}</text>
+                                        <text x={mapInvX(invV)} y={graphHeight - margin.bottom + 14} textAnchor="middle" fontSize="9" fontFamily="monospace" fill="#94a3b8">{invV.toFixed(1)}</text>
                                     </g>
                                 ))}
                                 {[0, 200, 400, 600].map((p) => (
                                     <g key={`grid-invy-${p}`}>
                                         <line x1={margin.left} y1={mapY(p)} x2={graphWidth - margin.right} y2={mapY(p)} stroke="#f1f5f9" strokeWidth="1.5" />
-                                        <text x={margin.left - 8} y={mapY(p) + 4} textAnchor="end" className="text-[9px] font-mono fill-slate-400">{p}</text>
+                                        <text x={margin.left - 8} y={mapY(p) + 4} textAnchor="end" fontSize="9" fontFamily="monospace" fill="#94a3b8">{p}</text>
                                     </g>
                                 ))}
 
@@ -469,8 +484,8 @@ export default function BoylesLaw() {
                                 <line x1={margin.left} y1={graphHeight - margin.bottom} x2={margin.left} y2={margin.top} stroke="#475569" strokeWidth="1.5" />
 
                                 {/* 軸標籤 */}
-                                <text x={margin.left + plotWidth / 2} y={graphHeight - 4} textAnchor="middle" className="text-[10px] font-bold fill-slate-500">體積倒數, 1/V (1/m³)</text>
-                                <text transform={`translate(${margin.left - 42}, ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" className="text-[10px] font-bold fill-slate-500">壓力, P (kPa)</text>
+                                <text x={margin.left + plotWidth / 2} y={graphHeight - 4} textAnchor="middle" fontSize="10" fontWeight="bold" fill="#64748b">體積倒數, 1/V (1/m³)</text>
+                                <text transform={`translate(${margin.left - 42}, ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" fontSize="10" fontWeight="bold" fill="#64748b">壓力, P (kPa)</text>
 
                                 {/* 通過原點的理論直線 */}
                                 <path d={`M ${generateLinearPoints()}`} fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="4,4" opacity="0.6" />
@@ -483,15 +498,15 @@ export default function BoylesLaw() {
                                 {/* 操作標記 */}
                                 <circle cx={mapInvX(1 / volume)} cy={mapY(pressure)} r="5.5" fill="#ef4444" stroke="white" strokeWidth="1.5" />
                             </svg>
-                        </div>
-                    </div>
+                        </Box>
+                    </Box>
 
-                    <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-100 text-sm text-emerald-800 leading-relaxed shadow-sm">
+                    <Box sx={{ p: 1.5, borderRadius: 1, bgcolor: '#ecfdf5', border: '1px solid', borderColor: '#d1fae5', fontSize: '0.875rem', color: '#065f46', lineHeight: 1.625, boxShadow: 1 }}>
                         🎓 <strong>教學提示：</strong> 圖 1 中的關係是一條曲線 (反比例雙曲線)，而在圖 2 中將壓力對 1/體積作圖，會得到一條<strong>通過原點的完美直線</strong>。這完美地證明了壓力與 1/V 成正比！
-                    </div>
-                </div>
+                    </Box>
+                </Paper>
 
-            </div>
-        </div>
+            </Box>
+        </Box>
     );
 }

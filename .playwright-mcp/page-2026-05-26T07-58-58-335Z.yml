@@ -1,0 +1,21 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - heading "🔐 Admin Login" [level=1] [ref=e7]
+    - paragraph [ref=e8]: PhysicLab Administration Panel
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: Username
+      - generic [ref=e12]:
+        - textbox "Username" [active] [ref=e13]
+        - group:
+          - generic: Username
+    - generic [ref=e14]:
+      - generic: Password
+      - generic [ref=e15]:
+        - textbox "Password" [ref=e16]
+        - group:
+          - generic: Password
+    - button "Login" [ref=e17] [cursor=pointer]
+  - generic [ref=e18]: Admin credentials are required to access this panel.
+  - link "← Back to Student Login" [ref=e20] [cursor=pointer]:
+    - /url: /

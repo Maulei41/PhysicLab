@@ -1,0 +1,44 @@
+- generic [ref=e265]:
+  - banner [ref=e266]:
+    - generic [ref=e267]:
+      - heading "PhysicLab" [level=6] [ref=e268]
+      - generic [ref=e269]:
+        - paragraph [ref=e270]:
+          - text: "Logged in as:"
+          - strong [ref=e271]: Alice
+        - button "Logout" [ref=e272] [cursor=pointer]:
+          - img [ref=e274]
+          - text: Logout
+  - generic [ref=e276]:
+    - generic [ref=e277]:
+      - heading "Welcome, Alice!" [level=1] [ref=e278]
+      - heading "Select a module below to start exploring physics simulations." [level=6] [ref=e279]
+    - generic [ref=e280]:
+      - generic [ref=e282]:
+        - generic [ref=e283]:
+          - heading "🔬" [level=4] [ref=e284]
+          - heading "Gay-Lussac's Law" [level=6] [ref=e285]
+        - button "Enter Module" [ref=e287] [cursor=pointer]:
+          - text: Enter Module
+          - img [ref=e289]
+      - generic [ref=e292]:
+        - generic [ref=e293]:
+          - heading "🔬" [level=4] [ref=e294]
+          - heading "Boyle's Law" [level=6] [ref=e295]
+        - button "Enter Module" [ref=e297] [cursor=pointer]:
+          - text: Enter Module
+          - img [ref=e299]
+      - generic [ref=e302]:
+        - generic [ref=e303]:
+          - heading "🔬" [level=4] [ref=e304]
+          - heading "Charles's Law" [level=6] [ref=e305]
+        - button "Enter Module" [ref=e307] [cursor=pointer]:
+          - text: Enter Module
+          - img [ref=e309]
+      - generic [ref=e312]:
+        - generic [ref=e313]:
+          - heading "🔬" [level=4] [ref=e314]
+          - heading "Ideal Gas Law" [level=6] [ref=e315]
+        - button "Enter Module" [ref=e317] [cursor=pointer]:
+          - text: Enter Module
+          - img [ref=e319]

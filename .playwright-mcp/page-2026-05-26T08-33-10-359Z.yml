@@ -1,0 +1,87 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - button "Back to Dashboard" [ref=e6] [cursor=pointer]:
+        - img [ref=e8]
+        - text: Back to Dashboard
+      - generic [ref=e10]: Gay-Lussac's Law
+  - generic [ref=e12]:
+    - banner [ref=e13]:
+      - heading "給呂薩克定律模擬器 (Gay-Lussac's Law)" [level=4] [ref=e14]
+      - paragraph [ref=e15]:
+        - text: 探討在等容（固定體積）下，
+        - strong [ref=e16]: 壓力
+        - text: 與
+        - strong [ref=e17]: 溫度
+        - text: 的關係 (P ∝ T)。
+        - text: 請將中間的氣體容器
+        - strong [ref=e18]: 拖曳
+        - text: 至「冷水浴」或「熱水浴」中，觀察溫度變化如何影響內部粒子的運動速度與壓力。
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - heading "互動式實驗槽" [level=6] [ref=e22]
+          - generic [ref=e23]: 等容 (體積固定)
+        - img [ref=e25]:
+          - generic [ref=e26]: 室溫區 (300 K)
+          - generic [ref=e32]: ❄️ 冷水浴 (150 K)
+          - generic [ref=e38]: 🔥 熱水浴 (500 K)
+          - generic [ref=e48]: kPa
+          - generic [ref=e49]:
+            - generic:
+              - generic: 拖曳我
+        - generic [ref=e98]:
+          - generic [ref=e100]:
+            - generic [ref=e101]: 系統溫度 (T)
+            - heading "300 K" [level=5] [ref=e102]
+            - generic [ref=e103]: (26.9 °C)
+          - generic [ref=e105]:
+            - generic [ref=e106]: 內部壓力 (P)
+            - heading "100.0 kPa" [level=5] [ref=e107]
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - heading "壓力與溫度關係圖 (攝氏 °C)" [level=6] [ref=e110]
+          - img [ref=e112]:
+            - generic [ref=e114]: "-300"
+            - generic [ref=e116]: "-200"
+            - generic [ref=e118]: "-100"
+            - generic [ref=e120]: "0"
+            - generic [ref=e122]: "100"
+            - generic [ref=e124]: "200"
+            - generic [ref=e126]: "300"
+            - generic [ref=e128]: "400"
+            - generic [ref=e130]: "0"
+            - generic [ref=e132]: "50"
+            - generic [ref=e134]: "100"
+            - generic [ref=e136]: "150"
+            - generic [ref=e138]: "200"
+            - generic [ref=e139]: 溫度, T (°C)
+            - generic [ref=e140]: 壓力, P (kPa)
+            - generic [ref=e142]: "-273.15°C"
+            - generic [ref=e148]: 26.9 °C, 100 kPa
+        - generic [ref=e149]:
+          - heading "壓力與溫度關係圖 (克氏 K)" [level=6] [ref=e150]
+          - img [ref=e152]:
+            - generic [ref=e154]: "0"
+            - generic [ref=e156]: "100"
+            - generic [ref=e158]: "200"
+            - generic [ref=e160]: "300"
+            - generic [ref=e162]: "400"
+            - generic [ref=e164]: "500"
+            - generic [ref=e166]: "600"
+            - generic [ref=e168]: "0"
+            - generic [ref=e170]: "50"
+            - generic [ref=e172]: "100"
+            - generic [ref=e174]: "150"
+            - generic [ref=e176]: "200"
+            - generic [ref=e177]: 溫度, T (Kelvin)
+            - generic [ref=e178]: 壓力, P (kPa)
+            - generic [ref=e180]: 0 K
+            - generic [ref=e186]: 300 K, 100 kPa
+          - generic [ref=e187]:
+            - heading "💡 物理觀察：" [level=6] [ref=e188]
+            - text: 留意上方的攝氏圖表，壓力與溫度呈現線性關係，且延長線交於
+            - strong [ref=e189]: "-273.15 °C (絕對零度)"
+            - text: 。下方的克氏圖表則將原點設為絕對零度，因此圖線完美通過原點 (0, 0)，展現了壓力與絕對溫度成
+            - strong [ref=e190]: 正比 (P ∝ T)
+            - text: 的特性。

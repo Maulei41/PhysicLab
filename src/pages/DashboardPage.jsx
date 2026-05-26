@@ -3,36 +3,38 @@ import { getCookie } from '../utils/cookieAuth';
 import { modules } from '../utils/moduleRegistry';
 import Navbar from '../components/Navbar';
 import ModuleCard from '../components/ModuleCard';
+import { Box, Container, Typography, Grid } from '@mui/material';
 
 export default function DashboardPage() {
   const studentName = getCookie('studentName');
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <Box sx={{ minHeight: '100vh', backgroundColor: '#f1f5f9' }}>
       <Navbar isAdmin={false} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Container maxWidth="lg" sx={{ paddingY: 12 }}>
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">
-            Welcome, <span className="text-blue-600">{studentName}</span>!
-          </h1>
-          <p className="text-lg text-slate-600">
+        <Box sx={{ marginBottom: 12 }}>
+          <Typography variant="h3" component="h1" sx={{ fontWeight: 'bold', color: '#1e293b', marginBottom: 1 }}>
+            Welcome, <Typography component="span" sx={{ color: '#2563eb' }}>{studentName}</Typography>!
+          </Typography>
+          <Typography variant="h6" sx={{ color: '#475569' }}>
             Select a module below to start exploring physics simulations.
-          </p>
-        </div>
+          </Typography>
+        </Box>
 
         {/* Modules Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Grid container spacing={3}>
           {modules.map((module) => (
-            <ModuleCard
-              key={module.id}
-              id={module.id}
-              title={module.title}
-            />
+            <Grid item xs={12} sm={6} md={3} key={module.id}>
+              <ModuleCard
+                id={module.id}
+                title={module.title}
+              />
+            </Grid>
           ))}
-        </div>
-      </div>
-    </div>
+        </Grid>
+      </Container>
+    </Box>
   );
 }

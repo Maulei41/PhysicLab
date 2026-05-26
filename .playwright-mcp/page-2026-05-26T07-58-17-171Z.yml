@@ -1,0 +1,22 @@
+- generic [ref=e22]:
+  - banner [ref=e23]:
+    - generic [ref=e24]:
+      - heading "PhysicLab" [level=6] [ref=e188]
+      - generic [ref=e26]:
+        - paragraph [ref=e27]:
+          - text: "Logged in as:"
+          - strong [ref=e28]: Admin
+        - button "Logout" [ref=e189] [cursor=pointer]:
+          - img [ref=e31]
+          - text: Logout
+  - generic [ref=e33]:
+    - generic [ref=e34]:
+      - heading "Student Login Records" [level=4] [ref=e190]
+      - paragraph [ref=e36]: View and manage student login records. You can edit or delete records, or export them as CSV.
+    - generic [ref=e37]:
+      - button "Export as CSV" [ref=e191] [cursor=pointer]:
+        - img [ref=e41]
+        - text: Export CSV
+      - generic [ref=e192]:
+        - heading "No student logins yet" [level=6] [ref=e193]
+        - paragraph [ref=e194]: Student records will appear here when they log in.

@@ -1,0 +1,78 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - button "Back to Dashboard" [ref=e6] [cursor=pointer]:
+        - img [ref=e8]
+        - text: Back to Dashboard
+      - generic [ref=e10]: Boyle's Law
+  - generic [ref=e12]:
+    - banner [ref=e13]:
+      - heading "波以耳定律模擬器" [level=4] [ref=e14]
+      - paragraph [ref=e15]:
+        - text: 探討在等溫下壓力與體積之間的關係 (P ∝ 1/V)。
+        - strong [ref=e16]: 向下拉動把手
+        - text: 來壓縮氣體，並觀察將壓力對體積倒數 (1/V) 作圖時，雙曲線如何拉直成直線。
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - heading "加長型氣室" [level=6] [ref=e20]
+          - generic [ref=e21]: 等溫氣室
+        - generic [ref=e22]:
+          - generic:
+            - text: 💡
+            - strong: 向下拉動把手
+            - text: 來壓縮氣體。
+          - img [ref=e23]:
+            - generic [ref=e80]: kPa
+        - generic [ref=e81]:
+          - generic [ref=e83]:
+            - generic [ref=e84]: 氣室體積
+            - heading "5.00 m³" [level=5] [ref=e85]
+          - generic [ref=e87]:
+            - generic [ref=e88]: 感測器壓力
+            - heading "100.0 kPa" [level=5] [ref=e89]
+        - generic [ref=e90]:
+          - button "最大 (5.0 m³)" [ref=e91] [cursor=pointer]
+          - button "中等 (2.5 m³)" [ref=e92] [cursor=pointer]
+          - button "最小 (1.0 m³)" [ref=e93] [cursor=pointer]
+          - button "隱藏粒子" [ref=e94] [cursor=pointer]
+          - button "重設" [ref=e95] [cursor=pointer]
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - paragraph [ref=e98]: 1. 壓力與體積關係圖 (P-V 曲線)
+          - img [ref=e100]:
+            - generic [ref=e102]: "0"
+            - generic [ref=e104]: "1"
+            - generic [ref=e106]: "2"
+            - generic [ref=e108]: "3"
+            - generic [ref=e110]: "4"
+            - generic [ref=e112]: "5"
+            - generic [ref=e114]: "6"
+            - generic [ref=e116]: "0"
+            - generic [ref=e118]: "200"
+            - generic [ref=e120]: "400"
+            - generic [ref=e122]: "600"
+            - generic [ref=e123]: 體積, V (m³)
+            - generic [ref=e124]: 壓力, P (kPa)
+        - generic [ref=e127]:
+          - paragraph [ref=e128]: 2. 壓力與體積倒數關係圖 (P 對 1/V 的線性關係)
+          - img [ref=e130]:
+            - generic [ref=e132]: "0.0"
+            - generic [ref=e134]: "0.2"
+            - generic [ref=e136]: "0.4"
+            - generic [ref=e138]: "0.6"
+            - generic [ref=e140]: "0.8"
+            - generic [ref=e142]: "1.0"
+            - generic [ref=e144]: "1.2"
+            - generic [ref=e146]: "0"
+            - generic [ref=e148]: "200"
+            - generic [ref=e150]: "400"
+            - generic [ref=e152]: "600"
+            - generic [ref=e153]: 體積倒數, 1/V (1/m³)
+            - generic [ref=e154]: 壓力, P (kPa)
+        - generic [ref=e157]:
+          - text: 🎓
+          - strong [ref=e158]: 教學提示：
+          - text: 圖 1 中的關係是一條曲線 (反比例雙曲線)，而在圖 2 中將壓力對 1/體積作圖，會得到一條
+          - strong [ref=e159]: 通過原點的完美直線
+          - text: 。這完美地證明了壓力與 1/V 成正比！

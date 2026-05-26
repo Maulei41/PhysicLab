@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Box, Paper, Typography, Grid } from '@mui/material';
 
 // 常數設定
 const MIN_TEMP = 100; // K
@@ -167,30 +168,30 @@ export default function GayLussacLaw() {
   const thermometerHeight = ((temperature - 100) / 500) * 90;
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-6 font-sans text-slate-800 flex flex-col">
-      <header className="mb-6 pb-4 border-b border-slate-200">
-        <h1 className="text-3xl font-bold text-slate-900">給呂薩克定律模擬器 (Gay-Lussac's Law)</h1>
-        <p className="text-slate-600 mt-2">
+    <Box sx={{ minHeight: '100vh', bgcolor: '#f1f5f9', p: { xs: 1, md: 1.5 }, fontFamily: '"Inter","Roboto",sans-serif', color: '#1e293b', display: 'flex', flexDirection: 'column' }}>
+      <Box component="header" sx={{ mb: 3, pb: 1, borderBottom: 1, borderColor: '#e2e8f0' }}>
+        <Typography variant="h4" sx={{ fontWeight: 700, color: '#0f172a' }}>給呂薩克定律模擬器 (Gay-Lussac's Law)</Typography>
+        <Typography sx={{ color: '#475569', mt: 1 }}>
           探討在等容（固定體積）下，<strong>壓力</strong>與<strong>溫度</strong>的關係 (P ∝ T)。<br/>
           請將中間的氣體容器<strong>拖曳</strong>至「冷水浴」或「熱水浴」中，觀察溫度變化如何影響內部粒子的運動速度與壓力。
-        </p>
-      </header>
+        </Typography>
+      </Box>
 
       {/* 透過 lg:flex-row-reverse 讓先出現的裝置靠右，後出現的圖表靠左 */}
-      <div className="flex flex-col lg:flex-row-reverse gap-6 flex-1">
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row-reverse' }, gap: 3, flex: 1 }}>
         
         {/* 右側：實驗裝置 (透過 flex-row-reverse 排版至右側) */}
-        <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
-          <div className="w-full flex justify-between items-center mb-3">
-            <h2 className="text-lg font-bold text-slate-700">互動式實驗槽</h2>
-            <span className="text-xs bg-purple-100 text-purple-800 px-2.5 py-1 rounded-full font-semibold">
+        <Paper sx={{ p: 2.5, flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid', borderColor: '#e2e8f0' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5, width: '100%' }}>
+            <Typography variant="h6" sx={{ fontWeight: 700, color: '#334155' }}>互動式實驗槽</Typography>
+            <Box component="span" sx={{ fontSize: '0.75rem', bgcolor: '#f3e8ff', color: '#6b21a8', px: 1.25, py: 0.5, borderRadius: '9999px', fontWeight: 600 }}>
               等容 (體積固定)
-            </span>
-          </div>
+            </Box>
+          </Box>
 
-          <div className="relative w-full max-w-[400px] aspect-[4/5] bg-slate-100 rounded-lg overflow-hidden border border-slate-200 flex justify-center items-end pb-0">
+          <Box sx={{ position: 'relative', width: '100%', maxWidth: '400px', aspectRatio: '4/5', bgcolor: '#f1f5f9', borderRadius: 1, overflow: 'hidden', border: '1px solid', borderColor: '#e2e8f0', display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
             
-            <svg viewBox="0 0 400 500" className="w-full h-full select-none touch-none">
+            <svg viewBox="0 0 400 500" style={{ width: '100%', height: '100%', userSelect: 'none', touchAction: 'none' }}>
               
               {/* 背景提示文字 */}
               <text x="200" y="200" textAnchor="middle" fill="#94a3b8" fontSize="14" fontWeight="bold">室溫區 (300 K)</text>
@@ -242,7 +243,7 @@ export default function GayLussacLaw() {
                   style={{ transform: `rotate(${gaugeAngle}deg)` }}
                 />
                 <circle cx="0" cy="0" r="5" fill="#1e293b" />
-                <text x="0" y="22" textAnchor="middle" className="text-[10px] font-extrabold fill-slate-500">kPa</text>
+                <text x="0" y="22" textAnchor="middle" fontSize="10" fontWeight="800" fill="#64748b">kPa</text>
               </g>
 
               {/* === 可拖曳的氣體容器 === */}
@@ -251,8 +252,7 @@ export default function GayLussacLaw() {
                 onPointerDown={handlePointerDown}
                 onPointerMove={handlePointerMove}
                 onPointerUp={handlePointerUp}
-                className={isDragging ? "cursor-grabbing" : "cursor-grab"}
-                style={{ touchAction: 'none' }}
+                style={{ touchAction: 'none', cursor: isDragging ? 'grabbing' : 'grab' }}
               >
                 {/* 隱藏的加大感應區 */}
                 <rect x="-80" y="-120" width="160" height="200" fill="transparent" />
@@ -266,7 +266,7 @@ export default function GayLussacLaw() {
 
                 {/* 提示拖曳的手指圖示 */}
                 {!isDragging && flaskPos.x === 200 && flaskPos.y === 150 && (
-                  <g transform="translate(0, -145)" className="animate-bounce pointer-events-none">
+                  <g transform="translate(0, -145)" style={{ animation: 'bounce 1s infinite', pointerEvents: 'none' }}>
                     <path d="M 0 0 L 10 -15 L -10 -15 Z" fill="#64748b" />
                     <rect x="-4" y="-30" width="8" height="16" fill="#64748b" />
                     <text x="0" y="-35" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#475569">拖曳我</text>
@@ -305,38 +305,42 @@ export default function GayLussacLaw() {
                 </g>
               </g>
             </svg>
-          </div>
+          </Box>
 
           {/* 數據儀表板 */}
-          <div className="mt-4 w-full max-w-[400px] grid grid-cols-2 gap-4">
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col items-center">
-              <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">系統溫度 (T)</span>
-              <span className="text-2xl font-mono font-bold text-orange-600 mt-1">
-                {temperature.toFixed(0)} K
-              </span>
-              <span className="text-xs text-slate-400 mt-1">
-                ({(temperature - 273.15).toFixed(1)} °C)
-              </span>
-            </div>
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col items-center">
-              <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">內部壓力 (P)</span>
-              <span className="text-2xl font-mono font-bold text-emerald-600 mt-1">
-                {pressure.toFixed(1)} kPa
-              </span>
-            </div>
-          </div>
-        </div>
+          <Grid container spacing={2} sx={{ mt: 2, maxWidth: '400px', width: '100%' }}>
+            <Grid item xs={6}>
+              <Box sx={{ bgcolor: '#f8fafc', p: 1.5, borderRadius: 1, border: '1px solid', borderColor: '#e2e8f0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography variant="caption" sx={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>系統溫度 (T)</Typography>
+                <Typography variant="h5" sx={{ fontFamily: '"Fira Code","Consolas",monospace', fontWeight: 700, color: '#ea580c', mt: 0.5 }}>
+                  {temperature.toFixed(0)} K
+                </Typography>
+                <Typography variant="caption" sx={{ color: '#94a3b8', mt: 0.5 }}>
+                  ({(temperature - 273.15).toFixed(1)} °C)
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={6}>
+              <Box sx={{ bgcolor: '#f8fafc', p: 1.5, borderRadius: 1, border: '1px solid', borderColor: '#e2e8f0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography variant="caption" sx={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>內部壓力 (P)</Typography>
+                <Typography variant="h5" sx={{ fontFamily: '"Fira Code","Consolas",monospace', fontWeight: 700, color: '#059669', mt: 0.5 }}>
+                  {pressure.toFixed(1)} kPa
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </Paper>
 
         {/* 左側：雙圖表區 */}
-        <div className="flex-1 flex flex-col gap-4">
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
           
           {/* 上半部：攝氏溫度圖表 */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col justify-between">
-            <h2 className="text-lg font-bold text-slate-700 mb-3 text-center lg:text-left">
+          <Paper sx={{ p: 2.5, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid', borderColor: '#e2e8f0' }}>
+            <Typography variant="h6" sx={{ fontWeight: 700, color: '#334155', mb: 1.5, textAlign: { xs: 'center', lg: 'left' } }}>
               壓力與溫度關係圖 (攝氏 °C)
-            </h2>
-            <div className="w-full aspect-[5/3.2] relative flex justify-center items-center">
-              <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} className="w-full h-full overflow-visible">
+            </Typography>
+            <Box sx={{ width: '100%', aspectRatio: '5/3.2', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} style={{ width: '100%', height: '100%', overflow: 'visible' }}>
                 
                 {/* 網格線 */}
                 {[-300, -200, -100, 0, 100, 200, 300, 400].map((tc) => (
@@ -346,7 +350,7 @@ export default function GayLussacLaw() {
                       x2={mapXc(tc)} y2={graphHeight - margin.bottom} 
                       stroke={tc === 0 ? "#cbd5e1" : "#f1f5f9"} strokeWidth={tc === 0 ? "2" : "1.5"} 
                     />
-                    <text x={mapXc(tc)} y={graphHeight - margin.bottom + 16} textAnchor="middle" className="text-[10px] font-mono fill-slate-400">
+                    <text x={mapXc(tc)} y={graphHeight - margin.bottom + 16} textAnchor="middle" fontSize="10" fontFamily="monospace" fill="#94a3b8">
                       {tc}
                     </text>
                   </g>
@@ -358,7 +362,7 @@ export default function GayLussacLaw() {
                       x2={graphWidth - margin.right} y2={mapY(p)} 
                       stroke="#f1f5f9" strokeWidth="1.5" 
                     />
-                    <text x={margin.left - 8} y={mapY(p) + 4} textAnchor="end" className="text-[10px] font-mono fill-slate-400">
+                    <text x={margin.left - 8} y={mapY(p) + 4} textAnchor="end" fontSize="10" fontFamily="monospace" fill="#94a3b8">
                       {p}
                     </text>
                   </g>
@@ -369,10 +373,10 @@ export default function GayLussacLaw() {
                 <line x1={margin.left} y1={graphHeight - margin.bottom} x2={margin.left} y2={margin.top} stroke="#475569" strokeWidth="1.5" />
 
                 {/* 坐標軸標籤 */}
-                <text x={margin.left + plotWidth / 2} y={graphHeight - 10} textAnchor="middle" className="text-xs font-bold fill-slate-600">
+                <text x={margin.left + plotWidth / 2} y={graphHeight - 10} textAnchor="middle" fontSize="12" fontWeight="bold" fill="#475569">
                   溫度, T (°C)
                 </text>
-                <text transform={`translate(${margin.left - 45}, ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" className="text-xs font-bold fill-slate-600">
+                <text transform={`translate(${margin.left - 45}, ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" fontSize="12" fontWeight="bold" fill="#475569">
                   壓力, P (kPa)
                 </text>
 
@@ -382,7 +386,7 @@ export default function GayLussacLaw() {
                   x2={mapXc(400)} y2={mapY((400 + 273.15) * CONSTANT_K)} 
                   stroke="#cbd5e1" strokeWidth="2" strokeDasharray="4,4" 
                 />
-                <text x={mapXc(-273.15)} y={mapY(0) - 10} textAnchor="middle" className="text-[10px] font-bold fill-blue-500">
+                <text x={mapXc(-273.15)} y={mapY(0) - 10} textAnchor="middle" fontSize="10" fontWeight="bold" fill="#3b82f6">
                   -273.15°C
                 </text>
                 <circle cx={mapXc(-273.15)} cy={mapY(0)} r="4" fill="#3b82f6" />
@@ -395,26 +399,26 @@ export default function GayLussacLaw() {
                 />
 
                 {/* 當前狀態點 */}
-                <circle cx={mapXc(temperature - 273.15)} cy={mapY(pressure)} r="6" fill="#ef4444" stroke="white" strokeWidth="2" className="transition-all duration-75" />
+                <circle cx={mapXc(temperature - 273.15)} cy={mapY(pressure)} r="6" fill="#ef4444" stroke="white" strokeWidth="2"  />
                 
                 {/* 當前數據提示框 */}
                 <g transform={`translate(${Math.max(margin.left + 52, Math.min(graphWidth - margin.right - 52, mapXc(temperature - 273.15)))}, ${mapY(pressure) - 30})`}>
                   <rect x="-52" y="0" width="105" height="24" rx="4" fill="#0f172a" opacity="0.85" />
-                  <text x="0" y="15" textAnchor="middle" className="text-[9px] font-mono fill-white">
+                  <text x="0" y="15" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="white">
                     {(temperature - 273.15).toFixed(1)} °C, {pressure.toFixed(0)} kPa
                   </text>
                 </g>
               </svg>
-            </div>
-          </div>
+            </Box>
+          </Paper>
 
           {/* 下半部：克氏溫度圖表 */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col justify-between">
-            <h2 className="text-lg font-bold text-slate-700 mb-3 text-center lg:text-left">
+          <Paper sx={{ p: 2.5, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid', borderColor: '#e2e8f0' }}>
+            <Typography variant="h6" sx={{ fontWeight: 700, color: '#334155', mb: 1.5, textAlign: { xs: 'center', lg: 'left' } }}>
               壓力與溫度關係圖 (克氏 K)
-            </h2>
-            <div className="w-full aspect-[5/3.2] relative flex justify-center items-center">
-              <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} className="w-full h-full overflow-visible">
+            </Typography>
+            <Box sx={{ width: '100%', aspectRatio: '5/3.2', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} style={{ width: '100%', height: '100%', overflow: 'visible' }}>
                 
                 {/* 網格線 */}
                 {[0, 100, 200, 300, 400, 500, 600].map((t) => (
@@ -424,7 +428,7 @@ export default function GayLussacLaw() {
                       x2={mapX(t)} y2={graphHeight - margin.bottom} 
                       stroke="#f1f5f9" strokeWidth="1.5" 
                     />
-                    <text x={mapX(t)} y={graphHeight - margin.bottom + 16} textAnchor="middle" className="text-[10px] font-mono fill-slate-400">
+                    <text x={mapX(t)} y={graphHeight - margin.bottom + 16} textAnchor="middle" fontSize="10" fontFamily="monospace" fill="#94a3b8">
                       {t}
                     </text>
                   </g>
@@ -436,7 +440,7 @@ export default function GayLussacLaw() {
                       x2={graphWidth - margin.right} y2={mapY(p)} 
                       stroke="#f1f5f9" strokeWidth="1.5" 
                     />
-                    <text x={margin.left - 8} y={mapY(p) + 4} textAnchor="end" className="text-[10px] font-mono fill-slate-400">
+                    <text x={margin.left - 8} y={mapY(p) + 4} textAnchor="end" fontSize="10" fontFamily="monospace" fill="#94a3b8">
                       {p}
                     </text>
                   </g>
@@ -447,10 +451,10 @@ export default function GayLussacLaw() {
                 <line x1={margin.left} y1={graphHeight - margin.bottom} x2={margin.left} y2={margin.top} stroke="#475569" strokeWidth="1.5" />
 
                 {/* 坐標軸標籤 */}
-                <text x={margin.left + plotWidth / 2} y={graphHeight - 10} textAnchor="middle" className="text-xs font-bold fill-slate-600">
+                <text x={margin.left + plotWidth / 2} y={graphHeight - 10} textAnchor="middle" fontSize="12" fontWeight="bold" fill="#475569">
                   溫度, T (Kelvin)
                 </text>
-                <text transform={`translate(${margin.left - 45}, ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" className="text-xs font-bold fill-slate-600">
+                <text transform={`translate(${margin.left - 45}, ${margin.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" fontSize="12" fontWeight="bold" fill="#475569">
                   壓力, P (kPa)
                 </text>
 
@@ -462,7 +466,7 @@ export default function GayLussacLaw() {
                 />
                 
                 {/* 絕對零度標示 */}
-                <text x={mapX(0)} y={mapY(0) - 10} textAnchor="middle" className="text-[10px] font-bold fill-blue-500">
+                <text x={mapX(0)} y={mapY(0) - 10} textAnchor="middle" fontSize="10" fontWeight="bold" fill="#3b82f6">
                   0 K
                 </text>
                 <circle cx={mapX(0)} cy={mapY(0)} r="4" fill="#3b82f6" />
@@ -475,27 +479,27 @@ export default function GayLussacLaw() {
                 />
 
                 {/* 當前狀態點 */}
-                <circle cx={mapX(temperature)} cy={mapY(pressure)} r="6" fill="#ef4444" stroke="white" strokeWidth="2" className="transition-all duration-75" />
+                <circle cx={mapX(temperature)} cy={mapY(pressure)} r="6" fill="#ef4444" stroke="white" strokeWidth="2"  />
                 
                 {/* 當前數據提示框 */}
                 <g transform={`translate(${Math.max(margin.left + 52, Math.min(graphWidth - margin.right - 52, mapX(temperature)))}, ${mapY(pressure) - 30})`}>
                   <rect x="-52" y="0" width="105" height="24" rx="4" fill="#0f172a" opacity="0.85" />
-                  <text x="0" y="15" textAnchor="middle" className="text-[9px] font-mono fill-white">
+                  <text x="0" y="15" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="white">
                     {temperature.toFixed(0)} K, {pressure.toFixed(0)} kPa
                   </text>
                 </g>
               </svg>
-            </div>
+            </Box>
             
             {/* 說明文字整合到下方 */}
-            <div className="mt-4 p-3 rounded-lg bg-blue-50 border border-blue-100 text-xs text-slate-700 leading-relaxed shadow-inner">
-              <h4 className="font-bold text-blue-900 mb-1">💡 物理觀察：</h4>
+            <Box sx={{ mt: 2, p: 1.5, borderRadius: 1, bgcolor: '#eff6ff', border: '1px solid', borderColor: '#dbeafe', fontSize: '0.75rem', color: '#334155', lineHeight: 1.625, boxShadow: 'inset 0 2px 4px 0 rgba(0,0,0,0.05)' }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#1e3a5f', mb: 0.5 }}>💡 物理觀察：</Typography>
               留意上方的攝氏圖表，壓力與溫度呈現線性關係，且延長線交於 <strong>-273.15 °C (絕對零度)</strong>。下方的克氏圖表則將原點設為絕對零度，因此圖線完美通過原點 (0, 0)，展現了壓力與絕對溫度成 <strong>正比 (P ∝ T)</strong> 的特性。
-            </div>
-          </div>
-        </div>
+            </Box>
+          </Paper>
+        </Box>
 
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

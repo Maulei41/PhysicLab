@@ -1,0 +1,60 @@
+- generic [ref=e1]:
+  - generic [ref=e22]:
+    - banner [ref=e23]:
+      - generic [ref=e24]:
+        - heading [level=6] [ref=e115]: PhysicLab
+        - generic [ref=e26]:
+          - paragraph [ref=e27]:
+            - text: "Logged in as:"
+            - strong [ref=e28]: Admin
+          - button [ref=e116] [cursor=pointer]:
+            - img [ref=e31]
+            - text: Logout
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - heading [level=4] [ref=e117]: Student Login Records
+        - paragraph [ref=e36]: View and manage student login records. You can edit or delete records, or export them as CSV.
+      - generic [ref=e37]:
+        - button [ref=e118] [cursor=pointer]:
+          - img [ref=e41]
+          - text: Export CSV
+        - table [ref=e44]:
+          - rowgroup [ref=e45]:
+            - row [ref=e119]:
+              - columnheader [ref=e120]: Name
+              - columnheader [ref=e121]: Student ID (SID)
+              - columnheader [ref=e122]: Login Time
+              - columnheader [ref=e123]: Actions
+          - rowgroup [ref=e51]:
+            - row [ref=e124]:
+              - cell [ref=e125]: AliceAlice Smith
+              - cell [ref=e126]: S99999
+              - cell [ref=e127]: 05/26/2026, 15:55:53
+              - cell [ref=e128]:
+                - button [ref=e129] [cursor=pointer]:
+                  - img [ref=e58]
+                - button [ref=e130] [cursor=pointer]:
+                  - img [ref=e61]
+        - paragraph [ref=e64]:
+          - text: "Total logins recorded:"
+          - strong [ref=e65]: "1"
+          - text: "| Unique students:"
+          - strong [ref=e66]: "1"
+  - dialog "Edit Student Record" [active] [ref=e133]:
+    - heading "Edit Student Record" [level=2] [ref=e134]
+    - generic [ref=e135]:
+      - generic [ref=e136]:
+        - generic [ref=e137]: Student Name
+        - generic [ref=e138]:
+          - textbox "Student Name" [ref=e139]: AliceAlice Smith
+          - group:
+            - generic: Student Name
+      - generic [ref=e140]:
+        - generic [ref=e141]: Student ID (SID)
+        - generic [ref=e142]:
+          - textbox "Student ID (SID)" [ref=e143]: S99999
+          - group:
+            - generic: Student ID (SID)
+    - generic [ref=e144]:
+      - button "Cancel" [ref=e145] [cursor=pointer]
+      - button "Save" [ref=e146] [cursor=pointer]
